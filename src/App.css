@@ -1,42 +1,221 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  padding: 40px 20px;
+  overflow-x: hidden;
+
+  background: radial-gradient(circle at 20% 30%, #8e1c4a 0%, transparent 40%),
+              radial-gradient(circle at 80% 70%, #0d3b4f 0%, transparent 45%),
+              linear-gradient(135deg, #5b1233 0%, #0a2230 100%);
+  background-size: 200% 200%;
+  animation: gradientMove 18s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, 
+              rgba(255,255,255,0.06) 0%, 
+              rgba(255,255,255,0.03) 30%, 
+              transparent 60%);
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: particlesMove 40s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes particlesMove {
+  0% {
+    transform: translate(0,0);
+  }
+  100% {
+    transform: translate(50px,50px);
+  }
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.header p {
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+.logos {
+  display: flex;
+  gap: 16px;
+}
+
+.badge {
+  background: rgba(255,255,255,0.15);
+  padding: 12px 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.chip {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 24px;
+}
+
+.match-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  align-items: center;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.15);
+  gap: 10px;
+}
+
+
+.match-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.12);
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.team img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 8px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.team span {
+  font-weight: 600;
+}
+
+.team small {
+  opacity: 0.6;
+}
+
+.match-info {
+  text-align: center;
+}
+
+.match-info h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 6px 0;
+}
+
+.status {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  font-size: 14px;
+}
+
+.descanso {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+
+  .match-card {
+    grid-template-columns: 90px 1fr 90px;
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .team img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .match-info h2 {
+    font-size: 22px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+
+.notice {
+  margin: 30px 0;
+  padding: 14px 24px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  font-weight: 500;
+  text-align: center;
+  opacity: 0.9;
+}
+.field {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.9;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.status {
+  margin-top: 8px;
+  display: inline-block;
 }
