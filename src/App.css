@@ -181,6 +181,14 @@ body::after {
   text-align: center;
 }
 
+.category-block {
+  margin-bottom: 50px;
+}
+
+.chip {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
 
   .match-card {
