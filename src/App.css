@@ -1,3 +1,7 @@
+/* ===============================
+   RESET
+================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -5,76 +9,40 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* ===============================
+   BACKGROUND (azul suave)
+================================= */
+
 body {
   min-height: 100dvh;
-  font-family: 'Inter', sans-serif;
-  color: white;
   padding: 40px 20px;
   overflow-x: hidden;
+  color: #1f2937;
 
-  background: radial-gradient(circle at 20% 30%, #EC7498 0%, transparent 40%),
-              radial-gradient(circle at 80% 70%, #0368A3 0%, transparent 45%),
-              linear-gradient(135deg, #0368A3 0%, #EC7498 100%);
-  background-size: 200% 200%;
-  animation: gradientMove 18s ease infinite;
+  background: linear-gradient(
+    180deg,
+    #7fc8f8 0%,
+    #8ed6ff 40%,
+    #a0e3ff 100%
+  );
 }
 
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, 
-              rgba(255,255,255,0.06) 0%, 
-              rgba(255,255,255,0.03) 30%, 
-              transparent 60%);
-  pointer-events: none;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 80px 80px;
-  animation: particlesMove 40s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes particlesMove {
-  0% {
-    transform: translate(0,0);
-  }
-  100% {
-    transform: translate(50px,50px);
-  }
-}
-
+/* ===============================
+   CONTAINER
+================================= */
 
 .container {
   max-width: 1200px;
   margin: auto;
 }
 
+/* ===============================
+   HEADER
+================================= */
+
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  color: white;
 }
 
 .header h1 {
@@ -83,55 +51,64 @@ body::after {
 }
 
 .header p {
-  opacity: 0.7;
   margin-top: 6px;
+  opacity: 0.9;
 }
 
-.logos {
-  display: flex;
-  gap: 16px;
-}
+/* ===============================
+   CATEGORY CHIP (rosa fuerte)
+================================= */
 
-.badge {
-  background: rgba(255,255,255,0.15);
-  padding: 12px 20px;
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
+.category-block {
+  margin-bottom: 70px;
 }
 
 .chip {
   display: inline-block;
-  padding: 10px 20px;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  margin-bottom: 24px;
-  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff4fa3, #ff7abf);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 35px;
+  box-shadow: 0 8px 20px rgba(255, 79, 163, 0.4);
 }
+
+/* ===============================
+   GRID
+================================= */
 
 .match-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
+  gap: 32px;
 }
+
+/* ===============================
+   MATCH CARD (blanca redondeada)
+================================= */
 
 .match-card {
   display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
+  grid-template-columns: 1fr 1.4fr 1fr;
   align-items: center;
-  padding: 28px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.15);
-  gap: 10px;
+  padding: 32px;
+  border-radius: 32px;
+  background: #ffffff;
+  color: #1f2937;
+  gap: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
 }
-
 
 .match-card:hover {
   transform: translateY(-6px);
-  background: rgba(255,255,255,0.12);
 }
+
+/* ===============================
+   TEAM
+================================= */
 
 .team {
   display: flex;
@@ -141,38 +118,70 @@ body::after {
 }
 
 .team img {
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  background: #f5f5f5;
+  padding: 6px;
 }
 
 .team span {
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 16px;
 }
 
 .team small {
-  opacity: 0.6;
+  font-size: 13px;
+  color: #6b7280;
 }
+
+/* ===============================
+   MATCH INFO
+================================= */
 
 .match-info {
   text-align: center;
 }
 
-.match-info h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 6px 0;
+.match-info p {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 600;
 }
 
-.status {
-  margin-top: 10px;
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.15);
-  font-size: 14px;
+.match-info h2 {
+  font-size: 34px;
+  font-weight: 900;
+  margin: 8px 0;
+  color: #111827;
 }
+
+.field {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+}
+
+/* ===============================
+   STATUS (azul suave)
+================================= */
+
+.status {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #5ba8e5;
+  color: white;
+}
+
+/* ===============================
+   REST CARD
+================================= */
 
 .descanso {
   display: flex;
@@ -181,49 +190,53 @@ body::after {
   text-align: center;
 }
 
-.category-block {
-  margin-bottom: 50px;
+.descanso .status {
+  background: #5ba8e5;
 }
 
-.chip {
-  margin-bottom: 20px;
+/* ===============================
+   NOTICE (barra redondeada)
+================================= */
+
+.notice {
+  margin: 40px 0;
+  padding: 18px 30px;
+  border-radius: 40px;
+  background: rgba(255,255,255,0.6);
+  color: #1f2937;
+  font-weight: 700;
+  text-align: center;
+  backdrop-filter: blur(6px);
 }
 
-/* Skeleton base */
+/* ===============================
+   SKELETON
+================================= */
+
 .skeleton {
   position: relative;
   overflow: hidden;
+  border-radius: 32px;
+  background: #ffffff;
 }
 
 .skeleton-circle {
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
+  background: #e5e7eb;
 }
 
 .skeleton-text {
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.12);
+  background: #e5e7eb;
   margin: 6px auto;
 }
 
-.skeleton-text.small {
-  width: 80px;
-  height: 12px;
-}
+.skeleton-text.small { width: 80px; height: 12px; }
+.skeleton-text.medium { width: 120px; height: 14px; }
+.skeleton-text.large { width: 100px; height: 24px; }
 
-.skeleton-text.medium {
-  width: 120px;
-  height: 14px;
-}
-
-.skeleton-text.large {
-  width: 100px;
-  height: 24px;
-}
-
-/* Shimmer animation */
 .skeleton::after {
   content: "";
   position: absolute;
@@ -234,31 +247,25 @@ body::after {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.15),
+    rgba(255,255,255,0.7),
     transparent
   );
   animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
-  100% {
-    left: 150%;
-  }
+  100% { left: 150%; }
 }
 
-.category-block {
-  margin-bottom: 60px;
-}
-.chip {
-  margin-bottom: 20px;
-}
-
+/* ===============================
+   RESPONSIVE
+================================= */
 
 @media (max-width: 768px) {
 
   .match-card {
     grid-template-columns: 90px 1fr 90px;
-    padding: 20px;
+    padding: 24px;
   }
 
   .team img {
@@ -267,40 +274,10 @@ body::after {
   }
 
   .match-info h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
+
   .match-grid {
     grid-template-columns: 1fr;
   }
-  body {
-    background-size: 150% 150%;
-    animation: gradientMove 25s ease infinite;
-  }
-
-  body::after {
-    animation: none; /* elimina partículas animadas en mobile */
-  }
-}
-
-
-
-.notice {
-  margin: 30px 0;
-  padding: 14px 24px;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(12px);
-  font-weight: 500;
-  text-align: center;
-  opacity: 0.9;
-}
-.field {
-  margin-top: 6px;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.status {
-  margin-top: 8px;
-  display: inline-block;
 }
