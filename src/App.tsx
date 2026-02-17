@@ -37,7 +37,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   /* =========================
-     Transformación de datos
+     Transformación directa
   ========================= */
 
   const transformMatches = (raw: any[]): Match[] => {
@@ -63,7 +63,7 @@ function App() {
         suspendida,
         mensaje_suspendida: item.mensaje_suspendida,
         type: "game",
-        date: item.fecha,
+        date: item.fecha, // 👈 texto directo del Sheet
         time: item.hora,
         field: item.campo,
         status: item.estado,
@@ -82,35 +82,6 @@ function App() {
   };
 
   /* =========================
-     Ordenar partidos
-  ========================= */
-
-  const sortMatches = (data: Match[]) => {
-    return data.sort((a, b) => {
-      if (a.type === "rest") return 1;
-      if (b.type === "rest") return -1;
-
-      const dateA = new Date(`${a.date} ${a.time}`);
-      const dateB = new Date(`${b.date} ${b.time}`);
-
-      return dateA.getTime() - dateB.getTime();
-    });
-  };
-
-  /* =========================
-     Formatear fecha bonita
-  ========================= */
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("es-MX", {
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-    });
-  };
-
-  /* =========================
      Fetch centralizado
   ========================= */
 
@@ -120,24 +91,15 @@ function App() {
     getMatches()
       .then((data) => {
         const transformed = transformMatches(data);
-        const sorted = sortMatches(transformed);
-        setMatches(sorted);
+        setMatches(transformed);
       })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   };
 
-  /* =========================
-     Carga inicial
-  ========================= */
-
   useEffect(() => {
     fetchData();
   }, []);
-
-  /* =========================
-     Refetch cuando vuelve foco
-  ========================= */
 
   useEffect(() => {
     window.addEventListener("focus", fetchData);
@@ -193,7 +155,7 @@ function App() {
 
               {isSuspended ? (
                 <div className="notice">
-                  ⚠️{" "}
+                  {" "}
                   {suspensionMessage ||
                     `Categoría ${categoria} suspendida`}
                 </div>
@@ -209,7 +171,7 @@ function App() {
                     ) : (
                       <MatchCard
                         key={idx}
-                        date={formatDate(m.date)}
+                        date={m.date}  // 👈 texto directo
                         time={m.time}
                         field={m.field}
                         status={m.status}

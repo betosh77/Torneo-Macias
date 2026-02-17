@@ -6,7 +6,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   font-family: 'Inter', sans-serif;
   color: white;
   padding: 40px 20px;
@@ -111,7 +111,7 @@ body::after {
 
 .match-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
 }
 
@@ -189,6 +189,71 @@ body::after {
   margin-bottom: 20px;
 }
 
+/* Skeleton base */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.skeleton-text {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 6px auto;
+}
+
+.skeleton-text.small {
+  width: 80px;
+  height: 12px;
+}
+
+.skeleton-text.medium {
+  width: 120px;
+  height: 14px;
+}
+
+.skeleton-text.large {
+  width: 100px;
+  height: 24px;
+}
+
+/* Shimmer animation */
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 150%;
+  }
+}
+
+.category-block {
+  margin-bottom: 60px;
+}
+.chip {
+  margin-bottom: 20px;
+}
+
+
 @media (max-width: 768px) {
 
   .match-card {
@@ -204,7 +269,19 @@ body::after {
   .match-info h2 {
     font-size: 22px;
   }
+  .match-grid {
+    grid-template-columns: 1fr;
+  }
+  body {
+    background-size: 150% 150%;
+    animation: gradientMove 25s ease infinite;
+  }
+
+  body::after {
+    animation: none; /* elimina partículas animadas en mobile */
+  }
 }
+
 
 
 .notice {
