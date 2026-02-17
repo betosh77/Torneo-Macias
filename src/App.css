@@ -83,9 +83,11 @@ body::after {
   font-size: 36px;
   font-weight: 800;
   letter-spacing: -1px;
+  color: #FF4F9A;
 }
 
 .header p {
+  color: #FF4F9A;
   opacity: 0.75;
   margin-top: 6px;
 }
@@ -217,23 +219,25 @@ body::after {
 }
 
 /* ===============================
-   REST CARD
+   REST CARD (2 columnas reales)
 ================================= */
 
 .descanso {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 30px;
+}
+
+.descanso .team {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   text-align: center;
-  background: #ffffff;
-  color: #222;
-  border-radius: 26px;
-  padding: 30px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
 .descanso .status {
-  background: linear-gradient(135deg, #6CC3FF, #4FA3FF);
+  justify-self: center; /* centra horizontalmente */
 }
 
 /* ===============================
@@ -317,30 +321,60 @@ body::after {
 
 @media (max-width: 768px) {
 
-  .match-grid {
-    grid-template-columns: 1fr;
+  body {
+    padding: 30px 16px;
   }
 
+  .container {
+    width: 100%;
+  }
+
+  .match-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* 🔥 Mantener 3 columnas en mobile */
   .match-card {
-    grid-template-columns: 90px 1fr 90px;
-    padding: 22px;
+    grid-template-columns: 80px 1fr 80px;
+    padding: 20px;
+    gap: 10px;
   }
 
   .team img {
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .team span {
+    font-size: 13px;
+  }
+
+  .team small {
+    font-size: 12px;
   }
 
   .match-info h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
-  body {
-    background-size: 150% 150%;
-    animation: gradientMove 25s ease infinite;
+  .match-info p {
+    font-size: 12px;
   }
 
-  body::after {
-    animation: none;
+  .field {
+    font-size: 12px;
   }
+
+  .status {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  /* descanso mantiene 2 columnas */
+  .descanso {
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+  }
+
 }
