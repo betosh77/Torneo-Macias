@@ -12,9 +12,9 @@ body {
   padding: 40px 20px;
   overflow-x: hidden;
 
-  background: radial-gradient(circle at 20% 30%, #8e1c4a 0%, transparent 40%),
-              radial-gradient(circle at 80% 70%, #0d3b4f 0%, transparent 45%),
-              linear-gradient(135deg, #5b1233 0%, #0a2230 100%);
+  background: radial-gradient(circle at 20% 30%, #EC7498 0%, transparent 40%),
+              radial-gradient(circle at 80% 70%, #0368A3 0%, transparent 45%),
+              linear-gradient(135deg, #0368A3 0%, #EC7498 100%);
   background-size: 200% 200%;
   animation: gradientMove 18s ease infinite;
 }
